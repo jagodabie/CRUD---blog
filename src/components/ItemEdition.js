@@ -1,9 +1,7 @@
 import React,{useState} from 'react';
 import '../css/ItemEdition.css';
 import ReactDOM from 'react-dom';
-
-
-const ItemEdition = (props) => {
+const ItemEdition = ({postsPerPage,indexIsClicked}) => {
     const [input, setInput] = useState(''); 
     const EditorStyling = {width:"20rem",background:"white", border:"solid 0.5px rgba(168, 153, 153, 0.3",padding:"0.5rem", margin:"0.2rem"};
     const handleSubmit = (evt) => {
@@ -19,7 +17,7 @@ const ItemEdition = (props) => {
                                    message: ""
             })
         };
-        fetch(`http://localhost:3000/post/${props.indexIsClicked}`, requestOptions)
+        fetch(`http://localhost:3000/post/${indexIsClicked}`, requestOptions)
             .then(response => response.json())
             window.location.reload(false);
     }
@@ -44,19 +42,13 @@ const ItemEdition = (props) => {
                                 onChange={e => setInput(e.target.value)}
                             />
                             </label>
-                                <input type="submit" value="Potwierdż" class ="btn btn-primary" onSubmit={handleSubmit}/>
+                                <input type="submit" value="Potwierdż" className ="btn btn-primary" onSubmit={handleSubmit}/>
                                 </div>    
                         </form>
-                        <div className = "ItemEdition-item-body">
-                            {props.post[props.indexIsClicked].body}
-                        </div>  
+                        
                         <br></br>
-                        <input type="submit" value="Cofnij" onClick = {handleCancel} class ="btn btn-primary"/>
-
+                        <input type="submit" value="Cofnij" onClick = {handleCancel} className ="btn btn-primary"/>
                     </div>
-                    {props.children
-                    }
         </div>,document.getElementById('modal-root'))
     }
- 
 export default ItemEdition;

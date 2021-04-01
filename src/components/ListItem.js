@@ -17,9 +17,9 @@ const ListItem = ({currentPosts=[]}) => {
                   <li key={data.id} onClick={handler} className= "list-group-item list-group-item-action"data-index={index} >{data.title}</li>
                   {trigger? <ItemEdition indexIsClicked = {indexIsClicked} currentPosts={currentPosts} trigger= {trigger}/>:null}
                 </>	
-    	    )	
-    }) 
-  }
+    	          )	
+      }) 
+    }
     </>
   );
 }
